@@ -1,0 +1,34 @@
+# Node modules
+node_modules/
+package-lock.json
+
+# Python virtual environment
+venv/
+__pycache__/
+
+# Large ceremony files
+*.ptau
+pot*.ptau
+powersOfTau*.ptau
+
+# Compiled outputs (optional - you may want to keep these)
+# outputs/*.zkey
+# outputs/*.r1cs
+# outputs/*.wtns
+
+# Witness files (generated during testing)
+outputs/*.wtns
+
+# Temporary files
+*.tmp
+.DS_Store
+.vscode/
+.idea/
+
+# Sensitive data
+.env
+private_keys/
+
+# Build artifacts
+build/
+dist/
