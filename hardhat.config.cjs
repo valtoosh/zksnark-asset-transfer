@@ -1,27 +1,17 @@
-import { HardhatUserConfig } from "hardhat/config";
-import "@nomicfoundation/hardhat-verify";
-import * as dotenv from "dotenv";
+require("@nomicfoundation/hardhat-verify");
+require("dotenv").config();
 
-dotenv.config();
-
-const config: HardhatUserConfig = {
+module.exports = {
   solidity: {
     version: "0.8.28",
     settings: {
       optimizer: {
         enabled: true,
         runs: 200
-      },
-      metadata: {
-        bytecodeHash: "none"
       }
     }
   },
   networks: {
-    localhost: {
-      type: "http",
-      url: "http://127.0.0.1:8545"
-    },
     sepolia: {
       type: "http",
       url: process.env.SEPOLIA_RPC_URL || "",
@@ -35,5 +25,3 @@ const config: HardhatUserConfig = {
     }
   }
 };
-
-export default config;
