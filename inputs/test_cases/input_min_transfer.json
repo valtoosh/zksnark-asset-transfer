@@ -1,0 +1,7 @@
+{
+  "senderBalance": "5000",
+  "transferAmount": "1",
+  "assetId": "2000",
+  "recipientId": "456",
+  "maxAmount": "42"
+}

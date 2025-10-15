@@ -10,11 +10,34 @@
   "license": "ISC",
   "dependencies": {
     "@openzeppelin/contracts": "^5.4.0",
+    "@tensorflow/tfjs-node": "^4.22.0",
     "@truffle/hdwallet-provider": "^2.1.15",
     "circomlib": "^2.0.5",
+    "compromise": "^14.14.4",
     "dotenv": "^17.2.2",
+    "natural": "^8.1.0",
     "snarkjs": "^0.7.5",
     "truffle-plugin-verify": "^0.6.7"
   },
-  "description": ""
+  "description": "![License](https://img.shields.io/badge/license-MIT-blue.svg) ![Circom](https://img.shields.io/badge/circom-2.1.4-green) ![Groth16](https://img.shields.io/badge/zkSNARK-Groth16-purple)",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ignition": "^3.0.3",
+    "@nomicfoundation/hardhat-ignition-ethers": "^3.0.3",
+    "@nomicfoundation/hardhat-toolbox-mocha-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-verify": "^3.0.3",
+    "@types/chai": "^4.3.20",
+    "@types/chai-as-promised": "^8.0.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.18.8",
+    "chai": "^5.3.3",
+    "ethers": "^6.15.0",
+    "forge-std": "github:foundry-rs/forge-std#v1.9.4",
+    "hardhat": "^3.0.6",
+    "mocha": "^11.7.4",
+    "typescript": "~5.8.0"
+  },
+  "type": "module"
 }

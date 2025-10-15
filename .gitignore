@@ -32,3 +32,28 @@ private_keys/
 # Build artifacts
 build/
 dist/
+.env
+
+# Build artifacts
+artifacts/
+cache/
+typechain-types/
+
+# Test files
+test/
+
+# Sensitive
+.env
+*.log
+
+# Large proof files (keep only essential ones)
+outputs/witness*.wtns
+outputs/*_0000.zkey
+outputs/ai_model/
+
+# Old backups
+outputs/backup_old_setup/
+contracts/old_verifiers/
+
+# Hardhat/Foundry
+ignition/
