@@ -1,184 +1,225 @@
-🎯 Here's the complete README.md file. Copy this entire content and replace your current README.md:
+# zkSNARK Privacy-Preserving Transaction System
+
+Zero-knowledge proof system for confidential blockchain transactions with AI-powered fraud detection.
+
+## 🚀 Live Deployment (Ethereum Sepolia Testnet)
+
+**✅ Production Contracts Deployed:**
+- **Verifier:** [0x9FfB4F8E3d4e8f0daA1Bba985Af56E6fe1734F87](https://sepolia.etherscan.io/address/0x9FfB4F8E3d4e8f0daA1Bba985Af56E6fe1734F87)
+- **PrivateTransfer:** [0x971715a1d9a51d71cF804B5100424D01250420F2](https://sepolia.etherscan.io/address/0x971715a1d9a51d71cF804B5100424D01250420F2)
+
+**Deployment Date:** October 13, 2025  
+**Network:** Ethereum Sepolia (Chain ID: 11155111)
+
+## 📊 Performance Achievements
+
+| Metric | Value | Status |
+|--------|-------|--------|
+| **Proof Generation** | **0.242s** | ✅ 12.4x faster than 3s target |
+| **Circuit Constraints** | 265 | ✅ Production-optimized |
+| **Gas Cost** | ~250k | ✅ Efficient on-chain validation |
+| **Variance** | ±0.001s | ✅ Highly stable |
+
+## 🏗️ System Architecture
+
+Transaction Request
+↓
+[AI Pre-Screening] ← Neural network anomaly detection (prototype)
+↓
+[zkSNARK Proof Generation] ← 265-constraint circuit (0.242s)
+↓
+[Groth16 Verifier] ← Cryptographic validation
+↓
+[Smart Contract] ← On-chain enforcement
+↓
+Ethereum Blockchain
 
 text
-# Privacy-Preserving Asset Transfer Using zk-SNARKs
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Circom](https://img.shields.io/badge/circom-2.1.4-green)
-![Groth16](https://img.shields.io/badge/zkSNARK-Groth16-purple)
+## 🔒 Privacy & Security Features
 
-A high-performance privacy-preserving asset transfer system built with zero-knowledge proofs (zk-SNARKs) that achieves sub-0.2s proof generation while maintaining comprehensive validation.
+### Privacy Layer (zkSNARK)
+- **Hidden Balances:** Sender balance kept confidential
+- **Hidden Amounts:** Transfer amount not revealed
+- **Hidden Recipient:** Recipient identity private
+- **Public Validation:** Only validity flag and new balance public
 
-## 🎯 Project Overview
+### Security Validation
+- Balance sufficiency check (sender has enough funds)
+- Transfer amount validation (within allowed range)
+- Maximum amount enforcement
+- Recipient verification
+- Complete arithmetic integrity
 
-This project addresses the **privacy paradox** in Central Bank Digital Currencies (CBDCs) and blockchain-based financial systems by implementing an enhanced zk-SNARK circuit that enables:
+### AI Integration (Prototype)
+- Behavioral anomaly detection using neural networks
+- 10-factor risk assessment model
+- Explainable predictions (feature importance)
+- Pre-screening to save gas costs
 
-- **Privacy-preserving transactions** with complete asset transfer validation
-- **Sub-second proof generation** (0.198s for 265 constraints)
-- **Multi-validation system** (balance, range, asset ID, recipient verification)
-- **Production-ready implementation** using professional circomlib templates
+## 🛠️ Technology Stack
 
-### Key Features
+**Blockchain:**
+- Circom 2.x - Circuit design language
+- SnarkJS - Proof generation
+- Groth16 - Zero-knowledge proof system
+- Solidity 0.8.28 - Smart contracts
+- Hardhat - Development framework
+- Ethereum Sepolia - Testnet deployment
 
-✅ **Enhanced Circuit Design** - 265 constraints with 88x complexity increase  
-✅ **Exceptional Performance** - 0.198s proof generation (15x faster than industry standard)  
-✅ **Multi-Validation** - Balance + Range + Asset + Recipient checks  
-✅ **Gas Optimized** - 393K gas for on-chain verification  
-✅ **Research-Based** - Addresses academic literature gaps in scalability
+**AI/ML:**
+- TensorFlow.js (Node) - Neural network implementation
+- Autoencoder architecture - Unsupervised anomaly detection
+- Real-time risk scoring
 
-## 📊 Performance Metrics
+**Tools:**
+- Node.js 22+
+- TypeScript
+- Ethers.js v6
 
-| Metric | Value | Industry Standard |
-|--------|-------|-------------------|
-| **Proof Generation** | 0.198s | ~3s |
-| **Witness Generation** | 0.094s | ~0.5s |
-| **Circuit Constraints** | 265 | ~3 (baseline) |
-| **Template Instances** | 8 | 1 (baseline) |
-| **Gas Cost** | 393K | 400K+ |
-
-## 🏗️ Architecture
+## 📁 Project Structure
 
 zkptesting/
-├── circuit/ # Circom circuit files
-│ ├── transfer.circom # Original baseline circuit
-│ └── transfer_v2.circom # Enhanced multi-validation circuit
-├── inputs/ # Test input files
-│ ├── input.json
-│ └── input_v2.json
-├── outputs/ # Compiled artifacts
-│ ├── transfer_v2.r1cs
-│ ├── transfer_v2.sym
-│ ├── transfer_v2_js/
-│ ├── transfer_v2_final.zkey
-│ └── verification_key_v2.json
-└── pot14_final_prepared.ptau # Powers of Tau ceremony file
+├── circuits/
+│ └── transfer_v2.circom # Main circuit (265 constraints)
+├── contracts/
+│ ├── Verifier.sol # zkSNARK verifier (deployed)
+│ └── PrivateTransfer.sol # Main contract (deployed)
+├── scripts/
+│ ├── deployToSepolia.js # Testnet deployment
+│ ├── benchmarkProofGeneration.js # Performance testing
+│ ├── testInvalidProof.js # Security validation
+│ ├── aiAnomalyDetection.js # AI fraud detection
+│ └── integratedAiZksnark.js # Full system integration
+├── inputs/
+│ ├── input_v2.json # Valid test case
+│ └── test_cases/ # Additional scenarios
+├── outputs/
+│ ├── benchmark_results.json # Performance data
+│ ├── circuit_final.zkey # Proving key
+│ └── verification_key.json # Verification key
+└── SEPOLIA_DEPLOYMENT.md # Deployment documentation
 
 text
 
-## 🚀 Getting Started
+## 🧪 Test Results
+
+### Valid Proofs ✅
+- Normal transfer (2000 from 6000 balance)
+- Minimum transfer (1 from 5000 balance)
+- Maximum transfer (5000 from 10000 balance)
+- Large balance transfer (5000 from 1M balance)
+
+**Result:** 4/4 tests passing
+
+### Invalid Proofs ✅
+- Overdraft attempt (2000 from 1000 balance) → Correctly rejected
+- Max amount violation (100 with max 50) → Correctly rejected
+
+**Result:** 2/2 correctly blocked
+
+### Performance Testing ✅
+- Average: 0.242s
+- Standard deviation: ±0.001s
+- Consistency: 100% across multiple runs
+
+## 🚀 Quick Start
 
 ### Prerequisites
+Required
+Node.js v22+
+npm or yarn
 
-- **Node.js** (v16 or higher)
-- **Circom** (v2.1.4)
-- **snarkjs** (latest)
-- **Rust** (for circom compilation)
+For deployment
+Alchemy/Infura RPC endpoint
+MetaMask with Sepolia ETH
+
+text
 
 ### Installation
-
-Clone the repository
+Clone repository
 git clone https://github.com/valtoosh/zksnark-asset-transfer.git
 cd zksnark-asset-transfer
 
 Install dependencies
-npm install -g snarkjs circom
+npm install
 
-Install circomlib
-npm install circomlib
-
-text
-
-### Quick Start
-
-1. Compile the enhanced circuit
-cd circuit
-circom transfer_v2.circom --r1cs --wasm --sym --output ../outputs --O1 -l ../node_modules
-
-2. Generate witness
-cd ../outputs
-node transfer_v2_js/generate_witness.js transfer_v2_js/transfer_v2.wasm ../inputs/input_v2.json witness.wtns
-
-3. Generate proof
-snarkjs groth16 fullprove ../inputs/input_v2.json transfer_v2_js/transfer_v2.wasm transfer_v2_final.zkey proof.json public.json
-
-4. Verify proof
-snarkjs groth16 verify verification_key_v2.json public.json proof.json
+Create .env file
+echo "SEPOLIA_RPC_URL=your_rpc_url" > .env
+echo "PRIVATE_KEY=your_private_key" >> .env
 
 text
 
-## 🔬 Technical Details
+### Run Tests
+Generate proof
+npx hardhat run scripts/testPrivateTransfer.js --network localhost
 
-### Circuit Design
+Test invalid proofs
+npx hardhat run scripts/testInvalidProof.js --network localhost
 
-The enhanced circuit implements:
+Performance benchmark
+npx hardhat run scripts/benchmarkProofGeneration.js
 
-1. **Balance Validation** - Ensures sender has sufficient funds using `LessEqThan(64)`
-2. **Range Checking** - Validates transfer amount bounds with `LessThan/GreaterThan`
-3. **Asset ID Verification** - Supports multi-asset transfers with non-zero validation
-4. **Recipient Validation** - Ensures valid recipient identifier
-5. **Arithmetic Constraints** - Calculates new balance post-transfer
-
-### Technologies Used
-
-- **Circom 2.1.4** - Circuit description language
-- **snarkjs** - JavaScript implementation of zk-SNARK protocols
-- **Groth16** - Zero-knowledge proof protocol
-- **circomlib** - Professional circuit template library
-- **Ethereum** - Target blockchain for deployment
-
-## 📈 Benchmarking
-
-Performance benchmarks conducted on:
-- **Platform**: macOS (Apple Silicon)
-- **Node.js**: v18.x
-- **Circuit Size**: 265 constraints
-- **Sample Size**: 5 test runs
-
-Run performance benchmark
-cd outputs
-time snarkjs groth16 fullprove ../inputs/input_v2.json transfer_v2_js/transfer_v2.wasm transfer_v2_final.zkey proof_bench.json public_bench.json
+AI demonstration
+node scripts/aiAnomalyDetection.js
 
 text
 
-**Results**: Consistent 0.197-0.199s proof generation across all test runs.
+## 📈 Key Achievements
 
-## 🎯 Phase 1 Status (Completed ✅)
+1. **✅ Production Deployment** - Live smart contracts on Ethereum Sepolia
+2. **✅ Sub-Second Performance** - 0.242s proof generation (12.4x faster)
+3. **✅ Complete Testing** - Valid and invalid proof coverage
+4. **✅ AI Integration** - Prototype fraud detection layer
+5. **✅ Public Verifiability** - Contracts viewable on Etherscan
 
-**Completed Achievements:**
-- ✅ Enhanced circuit design with 265 constraints
-- ✅ Sub-0.2s proof generation performance
-- ✅ Multi-validation system implementation
-- ✅ Professional circomlib integration
-- ✅ Comprehensive testing and benchmarking
+## 💡 Use Cases
 
-**Next Phases:**
-- **Phase 2**: Smart contract development & integration (Oct-Nov 2025)
-- **Phase 3**: Cross-chain HTLC mechanisms (Nov 2025)
-- **Phase 4**: Production deployment & academic publication (Dec 2025)
+### Financial Privacy
+- Confidential corporate transactions
+- Private wealth management
+- Anonymous high-value transfers
 
-## 🔍 Use Cases
+### DeFi Applications
+- Privacy-preserving DEX trades
+- Hidden liquidity provision
+- Confidential lending/borrowing
 
-### Primary Applications
-- **CBDCs**: Privacy-preserving central bank digital currency transactions
-- **DeFi**: Confidential asset transfers in decentralized finance
-- **Enterprise**: Private business-to-business payment systems
-- **Cross-Chain**: Secure asset transfers across multiple blockchains
+### Enterprise Solutions
+- B2B payment privacy
+- Supply chain finance
+- Cross-border settlements
 
-### Market Impact
-Targets **€24 trillion** CBDC market technical requirements and addresses the fundamental privacy paradox in digital currencies.
+### Regulatory Compliance
+- Zero-knowledge audit trails
+- Selective disclosure for compliance
+- Privacy-preserving KYC
 
-## 📚 Research Contribution
+## 🔗 Important Links
 
-This project addresses critical gaps identified in academic literature:
+- **Verifier Contract:** https://sepolia.etherscan.io/address/0x9FfB4F8E3d4e8f0daA1Bba985Af56E6fe1734F87
+- **PrivateTransfer Contract:** https://sepolia.etherscan.io/address/0x971715a1d9a51d71cF804B5100424D01250420F2
+- **Circom Documentation:** https://docs.circom.io/
+- **SnarkJS Guide:** https://github.com/iden3/snarkjs
 
-1. **Scalability Limitations** - Demonstrates practical sub-second proof generation
-2. **Privacy Paradox** - Balances transparency requirements with user privacy
-3. **Production Readiness** - Provides real-world performance metrics
-4. **Multi-Constraint Systems** - Shows complexity handling with maintained performance
+## 📝 Project Status
 
-## 🤝 Contributing
+| Component | Status | Notes |
+|-----------|--------|-------|
+| zkSNARK Circuit | ✅ Production | Deployed and tested |
+| Smart Contracts | ✅ Production | Live on Sepolia |
+| Performance | ✅ Production | 0.242s proof generation |
+| Security Testing | ✅ Complete | All tests passing |
+| AI Integration | 🚧 Prototype | Architecture complete, needs calibration |
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+## 🎯 Future Roadmap
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+1. Smart contract audit and formal verification
+2. AI model calibration with production data
+3. Frontend web interface development
+4. Mainnet deployment preparation
+5. Cross-chain integration (HTLC)
+6. Academic paper publication
 
 ## 👨‍💻 Author
 
@@ -187,30 +228,19 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Computer Science Engineering
 - GitHub: [@valtoosh](https://github.com/valtoosh)
 
+## 📄 License
+
+MIT License - See LICENSE file for details
+
 ## 🙏 Acknowledgments
 
-- **circom** and **snarkjs** teams for exceptional ZK tooling
-- **iden3** for circomlib professional templates
-- **BITS Pilani Dubai** for research support
-- Academic advisors and the ZK research community
-
-## 📖 Citation
-
-If you use this work in your research, please cite:
-
-@misc{singh2025privacypreserving,
-title={Privacy-Preserving Asset Transfer Using zk-SNARKs},
-author={Singh, Raj},
-year={2025},
-institution={BITS Pilani Dubai Campus}
-}
-
-text
-
-## 📞 Contact
-
-For questions or collaboration opportunities, please open an issue or contact the author directly.
+- Circom and SnarkJS teams for exceptional ZK tooling
+- iden3 for circomlib templates
+- BITS Pilani Dubai for research support
+- The zero-knowledge research community
 
 ---
 
-**⭐ If you find this project useful, please consider giving it a star!**
+**⭐ If you find this project useful, please star it!**
+
+**Last Updated:** October 13, 2025
