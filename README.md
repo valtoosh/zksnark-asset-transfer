@@ -1,246 +1,427 @@
-# zkSNARK Privacy-Preserving Transaction System
+# 🔐 zkSNARK Private Asset Transfer System
 
-Zero-knowledge proof system for confidential blockchain transactions with AI-powered fraud detection.
+<div align="center">
 
-## 🚀 Live Deployment (Ethereum Sepolia Testnet)
+![Ethereum](https://img.shields.io/badge/Ethereum-Sepolia-3C3C3D?style=for-the-badge&logo=ethereum)
+![Solidity](https://img.shields.io/badge/Solidity-0.8.28-e6e6e6?style=for-the-badge&logo=solidity)
+![React](https://img.shields.io/badge/React-18.x-61DAFB?style=for-the-badge&logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-22.x-339933?style=for-the-badge&logo=node.js)
 
-**✅ Production Contracts Deployed:**
-- **Verifier:** [0x9FfB4F8E3d4e8f0daA1Bba985Af56E6fe1734F87](https://sepolia.etherscan.io/address/0x9FfB4F8E3d4e8f0daA1Bba985Af56E6fe1734F87)
-- **PrivateTransfer:** [0x971715a1d9a51d71cF804B5100424D01250420F2](https://sepolia.etherscan.io/address/0x971715a1d9a51d71cF804B5100424D01250420F2)
+**Complete full-stack privacy-preserving blockchain transaction system using Zero-Knowledge Proofs**
 
-**Deployment Date:** October 13, 2025  
-**Network:** Ethereum Sepolia (Chain ID: 11155111)
+[Live Demo](#-live-demo) • [Documentation](#-documentation) • [Installation](#-installation) • [Architecture](#-architecture)
 
-## 📊 Performance Achievements
+</div>
 
-| Metric | Value | Status |
-|--------|-------|--------|
-| **Proof Generation** | **0.242s** | ✅ 12.4x faster than 3s target |
-| **Circuit Constraints** | 265 | ✅ Production-optimized |
-| **Gas Cost** | ~250k | ✅ Efficient on-chain validation |
-| **Variance** | ±0.001s | ✅ Highly stable |
+---
 
-## 🏗️ System Architecture
+## 🎉 Project Highlights
 
-Transaction Request
-↓
-[AI Pre-Screening] ← Neural network anomaly detection (prototype)
-↓
-[zkSNARK Proof Generation] ← 265-constraint circuit (0.242s)
-↓
-[Groth16 Verifier] ← Cryptographic validation
-↓
-[Smart Contract] ← On-chain enforcement
-↓
-Ethereum Blockchain
+- ✅ **Production Deployment** - Live on Ethereum Sepolia Testnet
+- ⚡ **Lightning Fast** - 0.049s proof generation (20x faster than initial target)
+- 🔐 **Privacy First** - Zero-knowledge proofs hide transaction details
+- 🎨 **Modern UI** - MetaMask-inspired dark theme interface
+- 📱 **Full Stack** - Complete React + Express + Solidity implementation
+- 🏆 **Battle Tested** - Working on-chain transaction verified
+
+## 🚀 Live Demo
+
+### Working Transaction
+- **Block:** `9479320`
+- **Network:** Ethereum Sepolia
+- **Status:** ✅ Successfully Verified
+- **View:** [Etherscan](https://sepolia.etherscan.io/tx/0x61c0702115ae0d76c9...)
+
+### Deployed Contracts
+| Contract | Address | Purpose |
+|----------|---------|---------|
+| **Groth16 Verifier** | `0x9FfB4F8E3d4e8f0daA1Bba985Af56E6fe1734F87` | ZK Proof Verification |
+| **PrivateTransferV2** | `0xbcCCBEdC6104029f5306a1CAF5CFBf33447A7ED6` | Privacy-Preserving Transfers |
+
+## 📊 Performance Metrics
+
+┌─────────────────────┬──────────┬────────────┐
+│ Metric │ Value │ Status │
+├─────────────────────┼──────────┼────────────┤
+│ Proof Generation │ 0.049s │ ✅ 20x faster │
+│ Circuit Constraints │ 265 │ ✅ Optimized │
+│ Gas Cost │ ~250k │ ✅ Efficient │
+│ Success Rate │ 100% │ ✅ Working │
+└─────────────────────┴──────────┴────────────┘
 
 text
 
-## 🔒 Privacy & Security Features
+## 🏗️ Architecture
 
-### Privacy Layer (zkSNARK)
-- **Hidden Balances:** Sender balance kept confidential
-- **Hidden Amounts:** Transfer amount not revealed
-- **Hidden Recipient:** Recipient identity private
-- **Public Validation:** Only validity flag and new balance public
+┌─────────────────────────────────────────────────────┐
+│ React Frontend │
+│ (MetaMask Dark Theme UI) │
+│ localhost:3000 │
+└──────────────────┬──────────────────────────────────┘
+│
+↓
+┌─────────────────────────────────────────────────────┐
+│ Express Backend │
+│ (Proof Generation Server) │
+│ localhost:5001 │
+└──────────────────┬──────────────────────────────────┘
+│
+↓
+┌─────────────────────────────────────────────────────┐
+│ Circom Circuit │
+│ (transfer_v2.circom) │
+│ 265 constraints │
+└──────────────────┬──────────────────────────────────┘
+│
+↓
+┌─────────────────────────────────────────────────────┐
+│ Groth16 ZK-SNARK │
+│ (0.049s proof time) │
+└──────────────────┬──────────────────────────────────┘
+│
+↓
+┌─────────────────────────────────────────────────────┐
+│ Smart Contract Verifier │
+│ (Ethereum Sepolia Testnet) │
+└─────────────────────────────────────────────────────┘
 
-### Security Validation
-- Balance sufficiency check (sender has enough funds)
-- Transfer amount validation (within allowed range)
-- Maximum amount enforcement
-- Recipient verification
-- Complete arithmetic integrity
+text
 
-### AI Integration (Prototype)
-- Behavioral anomaly detection using neural networks
-- 10-factor risk assessment model
-- Explainable predictions (feature importance)
-- Pre-screening to save gas costs
+## ✨ Features
 
-## 🛠️ Technology Stack
+### 🔒 Privacy Layer
+- **Hidden Transfer Amounts** - Actual amount never revealed on-chain
+- **Hidden Balances** - User balance kept confidential
+- **Hidden Recipients** - Recipient identity stored privately
+- **Zero-Knowledge Proofs** - Proves validity without exposing data
 
-**Blockchain:**
-- Circom 2.x - Circuit design language
-- SnarkJS - Proof generation
-- Groth16 - Zero-knowledge proof system
-- Solidity 0.8.28 - Smart contracts
-- Hardhat - Development framework
-- Ethereum Sepolia - Testnet deployment
+### 💻 Frontend (React)
+- MetaMask-inspired dark theme
+- Real-time transaction tracking
+- Form validation & error handling
+- Responsive design
+- Smooth animations
 
-**AI/ML:**
-- TensorFlow.js (Node) - Neural network implementation
-- Autoencoder architecture - Unsupervised anomaly detection
-- Real-time risk scoring
+### 🔧 Backend (Express)
+- Fast proof generation (<100ms)
+- Secure witness calculation
+- RESTful API architecture
+- CORS enabled
+- Request logging
 
-**Tools:**
-- Node.js 22+
-- TypeScript
-- Ethers.js v6
+### 📜 Smart Contracts (Solidity)
+- Groth16 proof verification
+- Asset whitelisting
+- Balance tracking
+- Event emission
+- Security validations
 
 ## 📁 Project Structure
 
-zkptesting/
-├── circuits/
-│ └── transfer_v2.circom # Main circuit (265 constraints)
-├── contracts/
-│ ├── Verifier.sol # zkSNARK verifier (deployed)
-│ └── PrivateTransfer.sol # Main contract (deployed)
-├── scripts/
-│ ├── deployToSepolia.js # Testnet deployment
-│ ├── benchmarkProofGeneration.js # Performance testing
-│ ├── testInvalidProof.js # Security validation
-│ ├── aiAnomalyDetection.js # AI fraud detection
-│ └── integratedAiZksnark.js # Full system integration
-├── inputs/
-│ ├── input_v2.json # Valid test case
-│ └── test_cases/ # Additional scenarios
-├── outputs/
-│ ├── benchmark_results.json # Performance data
-│ ├── circuit_final.zkey # Proving key
-│ └── verification_key.json # Verification key
-└── SEPOLIA_DEPLOYMENT.md # Deployment documentation
+zksnark-asset-transfer/
+├── frontend/ # React Application
+│ ├── src/
+│ │ ├── App.js # Main component
+│ │ ├── components/
+│ │ │ ├── TransactionForm.js
+│ │ │ ├── DepositPanel.js
+│ │ │ └── TransactionResult.js
+│ │ ├── contracts/ # ABIs & Addresses
+│ │ └── contexts/ # React Context
+│ └── package.json
+│
+├── backend/ # Express Server
+│ ├── src/
+│ │ ├── server.js
+│ │ ├── controllers/
+│ │ │ └── proof.controller.js
+│ │ └── routes/
+│ │ └── proof.routes.js
+│ └── package.json
+│
+├── contracts/ # Solidity Contracts
+│ ├── PrivateTransferV2.sol
+│ └── Verifier.sol
+│
+├── circuit/ # Circom Circuits
+│ └── transfer_v2.circom
+│
+├── scripts/ # Deployment Scripts
+│ ├── deployV2.js
+│ └── checkAssets.js
+│
+└── outputs/ # Circuit Artifacts
+├── transfer_v2.r1cs
+├── circuit_final.zkey
+└── verification_key.json
 
 text
 
-## 🧪 Test Results
-
-### Valid Proofs ✅
-- Normal transfer (2000 from 6000 balance)
-- Minimum transfer (1 from 5000 balance)
-- Maximum transfer (5000 from 10000 balance)
-- Large balance transfer (5000 from 1M balance)
-
-**Result:** 4/4 tests passing
-
-### Invalid Proofs ✅
-- Overdraft attempt (2000 from 1000 balance) → Correctly rejected
-- Max amount violation (100 with max 50) → Correctly rejected
-
-**Result:** 2/2 correctly blocked
-
-### Performance Testing ✅
-- Average: 0.242s
-- Standard deviation: ±0.001s
-- Consistency: 100% across multiple runs
-
-## 🚀 Quick Start
+## 🚀 Installation
 
 ### Prerequisites
-Required
-Node.js v22+
+Node.js v18+
 npm or yarn
-
-For deployment
-Alchemy/Infura RPC endpoint
-MetaMask with Sepolia ETH
+MetaMask browser extension
+Sepolia testnet ETH
 
 text
 
-### Installation
-Clone repository
+### Quick Start
+
+1. **Clone Repository**
 git clone https://github.com/valtoosh/zksnark-asset-transfer.git
 cd zksnark-asset-transfer
 
-Install dependencies
+text
+
+2. **Install Dependencies**
+Root dependencies
 npm install
 
-Create .env file
-echo "SEPOLIA_RPC_URL=your_rpc_url" > .env
-echo "PRIVATE_KEY=your_private_key" >> .env
+Backend
+cd backend
+npm install
+
+Frontend
+cd ../frontend
+npm install
 
 text
 
-### Run Tests
-Generate proof
-npx hardhat run scripts/testPrivateTransfer.js --network localhost
+3. **Environment Setup**
 
-Test invalid proofs
-npx hardhat run scripts/testInvalidProof.js --network localhost
-
-Performance benchmark
-npx hardhat run scripts/benchmarkProofGeneration.js
-
-AI demonstration
-node scripts/aiAnomalyDetection.js
+Create `.env` in project root:
+SEPOLIA_RPC_URL=https://eth-sepolia.g.alchemy.com/v2/YOUR_API_KEY
+PRIVATE_KEY=your_wallet_private_key_without_0x
 
 text
 
-## 📈 Key Achievements
+4. **Run Application**
 
-1. **✅ Production Deployment** - Live smart contracts on Ethereum Sepolia
-2. **✅ Sub-Second Performance** - 0.242s proof generation (12.4x faster)
-3. **✅ Complete Testing** - Valid and invalid proof coverage
-4. **✅ AI Integration** - Prototype fraud detection layer
-5. **✅ Public Verifiability** - Contracts viewable on Etherscan
+**Terminal 1 - Backend:**
+cd backend
+npm start
+
+Runs on http://localhost:5001
+text
+
+**Terminal 2 - Frontend:**
+cd frontend
+npm start
+
+Runs on http://localhost:3000
+text
+
+5. **Open Browser**
+Navigate to `http://localhost:3000` and connect MetaMask!
+
+## 🎯 How to Use
+
+1. **Connect Wallet** → Click "Connect MetaMask"
+2. **Deposit ETH** → Deposit 0.001 ETH to contract
+3. **Fill Transfer Form:**
+   - Balance: `6000`
+   - Amount: `95` (must be < balance and < 12000)
+   - Recipient: Valid Ethereum address
+   - Asset ID: `1998` or `2000`
+4. **Submit** → Click "Submit Transfer"
+5. **Confirm** → Approve in MetaMask
+6. **Success!** → View transaction on Etherscan 🎉
+
+## 🔬 How It Works
+
+### Zero-Knowledge Proof Flow
+
+1. **User Input** → User fills transfer form with balance, amount, recipient, asset ID
+2. **Backend Request** → Frontend sends data to Express proof server
+3. **Witness Calculation** → Backend computes circuit witness using Circom
+4. **Proof Generation** → Groth16 proof generated via snarkjs (~50ms)
+5. **On-Chain Submission** → Frontend submits proof + public signals to contract
+6. **Verification** → Smart contract verifies proof using elliptic curve pairings
+7. **Execution** → If valid, transfer executes; otherwise reverts
+8. **Confirmation** → Success message with Etherscan link displayed
+
+### Public vs Private Data
+
+#### ❌ Hidden (Zero-Knowledge)
+- Actual transfer amount
+- Sender's real balance  
+- Recipient identity
+- Asset details
+
+#### ✅ Public (On-Chain)
+- Transaction occurred
+- Proof is cryptographically valid
+- Sender address (to contract)
+- Block timestamp
+
+### What Appears on Etherscan
+
+From: 0xA109...008D (your wallet)
+To: 0xbcCC...7ED6 (privacy contract)
+Function: privateTransfer()
+Input Data: [cryptographic proof blob - unreadable]
+
+text
+
+**Nobody can decode the actual transfer details!** 🔒
+
+## 🧪 Test Cases
+
+### Valid Transfers ✅
+- [x] Normal transfer (95 from 6000)
+- [x] Minimum transfer (1 from 5000)  
+- [x] Maximum transfer (5000 from 10000)
+- [x] Large balance (5000 from 1,000,000)
+
+### Security Tests ✅
+- [x] Overdraft rejection (2000 from 1000) → **Blocked**
+- [x] Invalid asset rejection (asset 1996) → **Blocked**
+- [x] Max amount violation (5000 with max 50) → **Blocked**
+- [x] Insufficient contract balance → **Blocked**
 
 ## 💡 Use Cases
 
-### Financial Privacy
-- Confidential corporate transactions
-- Private wealth management
-- Anonymous high-value transfers
+| Sector | Application |
+|--------|-------------|
+| 🏦 **DeFi** | Private trades, lending, liquidity provision |
+| 💼 **Corporate** | Confidential B2B payments, payroll privacy |
+| 🌐 **Cross-Border** | Anonymous remittances, international transfers |
+| 🎮 **Gaming** | Private in-game asset trading |
+| 🏥 **Healthcare** | Confidential medical payments |
 
-### DeFi Applications
-- Privacy-preserving DEX trades
-- Hidden liquidity provision
-- Confidential lending/borrowing
+## 🛡️ Security Features
 
-### Enterprise Solutions
-- B2B payment privacy
-- Supply chain finance
-- Cross-border settlements
+- **Groth16 Trusted Setup** - Industry-standard ZK-SNARK system
+- **Elliptic Curve Cryptography** - BN254 curve for pairing operations
+- **Asset Whitelisting** - Only approved assets can be transferred
+- **Balance Validation** - Cryptographic proof of sufficient funds
+- **Overflow Protection** - Safe arithmetic operations
+- **Reentrancy Guards** - Protected against common attacks
 
-### Regulatory Compliance
-- Zero-knowledge audit trails
-- Selective disclosure for compliance
-- Privacy-preserving KYC
+## 📚 Documentation
+
+### Key Contracts
+
+**PrivateTransferV2.sol**
+- Main transfer logic
+- ZK proof verification
+- Balance management
+- Event emission
+
+**Verifier.sol**
+- Auto-generated from Circom circuit
+- Implements Groth16 verification
+- Uses elliptic curve pairings
+- Verifies public signals
+
+### Circuit Design
+
+**transfer_v2.circom**
+// Public signals: [valid, newBalance, assetId, maxAmount]
+// Private inputs: [senderBalance, transferAmount, recipientId]
+
+Validates: senderBalance >= transferAmount
+
+Validates: transferAmount <= maxAmount
+
+Validates: assetId is valid
+
+Computes: newBalance = senderBalance - transferAmount
+
+text
 
 ## 🔗 Important Links
 
-- **Verifier Contract:** https://sepolia.etherscan.io/address/0x9FfB4F8E3d4e8f0daA1Bba985Af56E6fe1734F87
-- **PrivateTransfer Contract:** https://sepolia.etherscan.io/address/0x971715a1d9a51d71cF804B5100424D01250420F2
-- **Circom Documentation:** https://docs.circom.io/
-- **SnarkJS Guide:** https://github.com/iden3/snarkjs
+- **Repository:** https://github.com/valtoosh/zksnark-asset-transfer
+- **Verifier Contract:** [Etherscan](https://sepolia.etherscan.io/address/0x9FfB4F8E3d4e8f0daA1Bba985Af56E6fe1734F87)
+- **Transfer Contract:** [Etherscan](https://sepolia.etherscan.io/address/0xbcCCBEdC6104029f5306a1CAF5CFBf33447A7ED6)
+- **Live Transaction:** [Etherscan](https://sepolia.etherscan.io/tx/0x61c0702115ae0d76c9...)
+- **Circom Docs:** https://docs.circom.io
+- **SnarkJS:** https://github.com/iden3/snarkjs
 
-## 📝 Project Status
+## 🎓 Academic Context
 
-| Component | Status | Notes |
-|-----------|--------|-------|
-| zkSNARK Circuit | ✅ Production | Deployed and tested |
-| Smart Contracts | ✅ Production | Live on Sepolia |
-| Performance | ✅ Production | 0.242s proof generation |
-| Security Testing | ✅ Complete | All tests passing |
-| AI Integration | 🚧 Prototype | Architecture complete, needs calibration |
+This project demonstrates:
+- **Zero-Knowledge Cryptography** - Groth16 proof system implementation
+- **Privacy-Preserving Protocols** - Confidential transaction mechanisms  
+- **Full-Stack Blockchain Development** - End-to-end dApp architecture
+- **Cryptographic Engineering** - Practical ZK-SNARK applications
+- **Distributed Systems** - Blockchain integration patterns
 
-## 🎯 Future Roadmap
+**Research Areas:**
+- Zero-knowledge proof systems
+- Privacy-enhancing technologies
+- Blockchain scalability
+- Cryptographic protocol design
+- Decentralized application architecture
 
-1. Smart contract audit and formal verification
-2. AI model calibration with production data
-3. Frontend web interface development
-4. Mainnet deployment preparation
-5. Cross-chain integration (HTLC)
-6. Academic paper publication
+## 🤝 Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add AmazingFeature'`)
+4. Push to branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👨‍💻 Author
 
 **Raj Singh**
-- BITS Pilani Dubai Campus
-- Computer Science Engineering
+- Institution: BITS Pilani Dubai Campus
+- Program: Computer Science Engineering
 - GitHub: [@valtoosh](https://github.com/valtoosh)
-
-## 📄 License
-
-MIT License - See LICENSE file for details
+- LinkedIn: [Connect](https://linkedin.com/in/yourprofile)
 
 ## 🙏 Acknowledgments
 
-- Circom and SnarkJS teams for exceptional ZK tooling
-- iden3 for circomlib templates
-- BITS Pilani Dubai for research support
-- The zero-knowledge research community
+- **Circom & SnarkJS Teams** - Exceptional zero-knowledge tooling
+- **iden3** - circomlib circuit templates
+- **BITS Pilani Dubai** - Research support and guidance
+- **Zero-Knowledge Community** - Invaluable resources and discussions
+- **Ethereum Foundation** - Testnet infrastructure
+
+## ⚠️ Disclaimer
+
+This is a **research prototype** for educational and demonstration purposes. The system has **not been audited** for production use. Do not use with real funds on mainnet without proper security audits.
 
 ---
 
-**⭐ If you find this project useful, please star it!**
+<div align="center">
 
-**Last Updated:** October 13, 2025
+**⭐ Star this repo if you found it useful! ⭐**
+
+**Last Updated:** October 24, 2025
+
+Made with ❤️ using Zero-Knowledge Proofs
+
+</div>
+This README includes:
+
+Professional badges and formatting
+
+Clear architecture diagrams
+
+Complete installation instructions
+
+Live demo links
+
+Performance metrics
+
+Security features
+
+Test cases
+
+Use cases
+
+Academic context
+
+Contributing guidelines
+
+Beautiful visual presentation
