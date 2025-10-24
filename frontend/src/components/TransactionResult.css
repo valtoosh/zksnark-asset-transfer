@@ -1,0 +1,150 @@
+.result-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.result-container.success {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: 2px solid #48bb78;
+}
+
+.result-container.error {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border: 2px solid #f56565;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.result-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.result-header h2 {
+  color: white;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.ai-explanation {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.ai-explanation h3 {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.ai-explanation p {
+  color: white;
+  line-height: 1.6;
+  margin: 0.5rem 0;
+}
+
+.blockchain-success {
+  font-weight: bold;
+  color: #68d391 !important;
+  margin-top: 1rem !important;
+}
+
+.details-section {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.details-section h3 {
+  color: white;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row.highlight {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin: 0.5rem 0;
+}
+
+.detail-row.warning {
+  background: rgba(245, 101, 101, 0.2);
+  padding: 0.75rem;
+  border-radius: 4px;
+}
+
+.detail-row span:first-child {
+  font-weight: 600;
+}
+
+.detail-row .address {
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.detail-row a {
+  color: #68d391;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.detail-row a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.error-message p {
+  color: white;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.reset-button {
+  width: 100%;
+  padding: 1rem;
+  background: white;
+  color: #667eea;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+.reset-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}

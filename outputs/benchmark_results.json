@@ -1,34 +1,34 @@
 [
   {
     "testCase": "Original Transfer",
-    "average": "0.249s",
-    "min": "0.238s",
-    "max": "0.284s",
-    "stdDev": "0.018s",
+    "average": "0.250s",
+    "min": "0.242s",
+    "max": "0.261s",
+    "stdDev": "0.006s",
     "iterations": 5
   },
   {
     "testCase": "Minimum Transfer (1 unit)",
-    "average": "0.242s",
-    "min": "0.241s",
-    "max": "0.242s",
-    "stdDev": "0.000s",
+    "average": "0.246s",
+    "min": "0.244s",
+    "max": "0.249s",
+    "stdDev": "0.002s",
     "iterations": 5
   },
   {
     "testCase": "Maximum Transfer (42 units)",
-    "average": "0.243s",
-    "min": "0.243s",
-    "max": "0.244s",
-    "stdDev": "0.000s",
+    "average": "0.255s",
+    "min": "0.250s",
+    "max": "0.270s",
+    "stdDev": "0.007s",
     "iterations": 5
   },
   {
     "testCase": "Large Balance (1M)",
-    "average": "0.243s",
-    "min": "0.241s",
-    "max": "0.245s",
-    "stdDev": "0.001s",
+    "average": "0.250s",
+    "min": "0.248s",
+    "max": "0.253s",
+    "stdDev": "0.002s",
     "iterations": 5
   }
 ]

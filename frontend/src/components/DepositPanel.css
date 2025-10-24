@@ -1,0 +1,115 @@
+.deposit-panel {
+  background: #1c1c1c;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  animation: slideUp 0.3s ease;
+  border: 1px solid #2d2d2d;
+}
+
+.deposit-panel h3 {
+  color: white;
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.deposit-info {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  font-family: 'Courier New', monospace;
+}
+
+.deposit-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.deposit-controls input {
+  flex: 1;
+  padding: 12px 14px;
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background: #24272a;
+  color: white;
+}
+
+.deposit-controls input:focus {
+  outline: none;
+  border-color: #0376c9;
+  background: #2a2d31;
+}
+
+.deposit-button {
+  background: #0376c9;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.deposit-button:hover:not(:disabled) {
+  background: #0260a4;
+  transform: translateY(-1px);
+}
+
+.deposit-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.deposit-message {
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease;
+}
+
+.deposit-message.success {
+  background: #10b981;
+  color: white;
+}
+
+.deposit-message.error {
+  background: #ef4444;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  .deposit-controls {
+    flex-direction: column;
+  }
+  
+  .deposit-button {
+    width: 100%;
+  }
+}

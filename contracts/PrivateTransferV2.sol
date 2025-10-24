@@ -11,20 +11,35 @@ interface IVerifier {
 }
 
 contract PrivateTransferV2 {
+    
     IVerifier public verifier;
     
     mapping(address => uint256) public balances;
+    mapping(address => uint256) public balanceCommitments;
     mapping(uint256 => bool) public validAssets;
+    
+    struct TransferRecord {
+        address from;
+        address to;
+        uint256 timestamp;
+        uint256 assetId;
+    }
+    
+    TransferRecord[] public transfers;
     uint256 public transferCount;
     
     event Deposited(address indexed user, uint256 amount);
     event Withdrawn(address indexed user, uint256 amount);
     event TransferExecuted(address indexed from, address indexed to, uint256 timestamp, uint256 assetId);
+    event BalanceCommitmentUpdated(address indexed user, uint256 newCommitment);
+    event AssetRegistered(uint256 indexed assetId);
     
-    constructor(address _verifier) {
-        verifier = IVerifier(_verifier);
+    constructor(address _verifierAddress) {
+        verifier = IVerifier(_verifierAddress);
         validAssets[1998] = true;
         validAssets[2000] = true;
+        emit AssetRegistered(1998);
+        emit AssetRegistered(2000);
     }
     
     function deposit() external payable {
@@ -48,23 +63,33 @@ contract PrivateTransferV2 {
         address recipient,
         uint256 amount
     ) external returns (bool) {
-        // UPDATED: Circuit outputs [valid, newBalance, assetId, maxAmount]
-        // So pubSignals[2] is assetId, pubSignals[3] is maxAmount
-        require(validAssets[pubSignals[2]], "Invalid asset");
-        
-        // Verify the zero-knowledge proof
         require(verifier.verifyProof(pA, pB, pC, pubSignals), "Invalid ZK proof");
         
-        // Check proof validity
-        require(pubSignals[0] == 1, "Proof shows invalid transfer");
+        // Circuit outputs: [valid, newBalance, assetId, maxAmount]
+        uint256 valid = pubSignals[0];
+        uint256 senderNewBalance = pubSignals[1];
+        uint256 assetId = pubSignals[2];  // FIXED: position 2
+        uint256 maxAmount = pubSignals[3]; // FIXED: position 3
         
-        // Execute transfer
-        require(balances[msg.sender] >= amount, "Insufficient contract balance");
+        require(valid == 1, "Transfer validation failed");
+        require(validAssets[assetId], "Invalid asset");
+        require(balances[msg.sender] >= amount, "Insufficient ETH balance");
+        require(amount <= maxAmount, "Amount exceeds max");
+        
         balances[msg.sender] -= amount;
         balances[recipient] += amount;
+        balanceCommitments[msg.sender] = senderNewBalance;
+        
+        transfers.push(TransferRecord({
+            from: msg.sender,
+            to: recipient,
+            timestamp: block.timestamp,
+            assetId: assetId
+        }));
         
         transferCount++;
-        emit TransferExecuted(msg.sender, recipient, block.timestamp, pubSignals[2]);
+        emit TransferExecuted(msg.sender, recipient, block.timestamp, assetId);
+        emit BalanceCommitmentUpdated(msg.sender, senderNewBalance);
         
         return true;
     }
@@ -75,6 +100,7 @@ contract PrivateTransferV2 {
     
     function registerAsset(uint256 assetId) external {
         validAssets[assetId] = true;
+        emit AssetRegistered(assetId);
     }
     
     function isValidAsset(uint256 assetId) external view returns (bool) {

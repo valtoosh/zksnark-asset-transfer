@@ -1,0 +1,96 @@
+.transaction-form-container {
+  background: #1c1c1c;
+  border-radius: 16px;
+  padding: 24px;
+  animation: slideUp 0.3s ease;
+  margin-bottom: 16px;
+  border: 1px solid #2d2d2d;
+}
+
+.transaction-form-container h2 {
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.transaction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  color: #9ca3af;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input {
+  padding: 14px 16px;
+  border: 1px solid #2d2d2d;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  background: #24272a;
+  color: white;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #0376c9;
+  background: #2a2d31;
+}
+
+.form-group input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-group input::placeholder {
+  color: #6b7280;
+}
+
+.submit-btn {
+  background: #0376c9;
+  color: white;
+  border: none;
+  padding: 16px;
+  border-radius: 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #0260a4;
+  transform: translateY(-1px);
+}
+
+.submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

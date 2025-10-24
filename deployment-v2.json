@@ -1,0 +1,9 @@
+{
+  "network": "sepolia",
+  "chainId": 11155111,
+  "verifier": "0x9FfB4F8E3d4e8f0daA1Bba985Af56E6fe1734F87",
+  "privateTransferV2": "0xbcCCBEdC6104029f5306a1CAF5CFBf33447A7ED6",
+  "deployer": "0xA1090527ac5c019Abc3989F405a5a63bB008008D",
+  "timestamp": "2025-10-24T09:40:14.108Z",
+  "etherscan": "https://sepolia.etherscan.io/address/0xbcCCBEdC6104029f5306a1CAF5CFBf33447A7ED6"
+}
