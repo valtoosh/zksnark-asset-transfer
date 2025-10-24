@@ -377,7 +377,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Institution: BITS Pilani Dubai Campus
 - Program: Computer Science Engineering
 - GitHub: [@valtoosh](https://github.com/valtoosh)
-- LinkedIn: [Connect](https://linkedin.com/in/yourprofile)
+- LinkedIn: [Raj Singh](https://linkedin.com/in/raj-singh-913a21278)
 
 ## 🙏 Acknowledgments
 
